@@ -1,0 +1,14 @@
+Source: go-openldap
+Section: devel
+Priority: extra
+Maintainer: Tonnerre Lombard <tonnerre@ancient-solutions.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+Homepage: https://github.com/mqu/openldap/
+Vcs-Git: https://github.com/mqu/openldap.git
+Vcs-Browser: https://github.com/mqu/openldap/
+
+Package: go-openldap
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libldap-2.4-2
+Description: OpenLDAP client integration for Go, using cgo.
