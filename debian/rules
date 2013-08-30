@@ -5,14 +5,11 @@ export DH_VERBOSE=1
 
 # GOPKG is the upstream path which you would normally “go get”.
 # Using it allows us to build applications without patching locations.
-GOPKG := github.com/mqu/openldap
+export GOPKG := github.com/mqu/openldap
 
 # Temporary working directory to which the source will be copied, then
 # compiled.
 TMPGOPATH = $(CURDIR)/debian/tmp/usr/share/gocode
-
-override_dh_auto_build:
-	dh_auto_build -- -ldflags '-w'
 
 # Currently, tests can't win.
 override_dh_auto_test:
