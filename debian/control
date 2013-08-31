@@ -12,3 +12,6 @@ Package: golang-openldap-dev
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, libldap-2.4-2
 Description: OpenLDAP client integration for Go, using cgo.
+ LDAP client library based on the official C client library from the
+ OpenLDAP team. This is basically just a thin wrapper allowing to call
+ the C API from Go.
