@@ -1,5 +1,5 @@
 golang-openldap (0.2-1) unstable; urgency=low
 
-  * Initial release
+  * Initial release. Closes: 721439.
 
  -- Tonnerre Lombard <tonnerre@ancient-solutions.com>  Sun, 28 Jul 2013 22:47:06 +0200
