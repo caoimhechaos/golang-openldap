@@ -3,9 +3,9 @@
 # Uncomment this to turn on verbose mode.
 export DH_VERBOSE=1
 
-# GOPKG is the upstream path which you would normally “go get”.
+# DH_GOPKG is the upstream path which you would normally “go get”.
 # Using it allows us to build applications without patching locations.
-export GOPKG := github.com/mqu/openldap
+export DH_GOPKG := github.com/mqu/openldap
 
 # Temporary working directory to which the source will be copied, then
 # compiled.
