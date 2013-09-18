@@ -7,10 +7,6 @@ export DH_VERBOSE=1
 # Using it allows us to build applications without patching locations.
 export DH_GOPKG := github.com/mqu/openldap
 
-# Temporary working directory to which the source will be copied, then
-# compiled.
-TMPGOPATH = $(CURDIR)/debian/tmp/usr/share/gocode
-
 # Currently, tests can't win.
 override_dh_auto_test:
 
