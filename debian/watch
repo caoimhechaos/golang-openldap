@@ -1,0 +1,2 @@
+version=3
+https://github.com/mqu/openldap/tags .*/v(\d\S*)\.tar\.gz
