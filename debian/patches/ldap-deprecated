@@ -1,0 +1,27 @@
+Description: Add some LDAP_DEPRECATED definitions for compilability.
+ In order to compile some of the exported LDAP functions which are in
+ reality marked as LDAP_DEPRECATED, these defines are required.
+Author: Tonnerre Lombard <tonnerre@ancient-solutions.com>
+Forwarded: https://github.com/mqu/openldap/pull/1
+Last-Update: 2013-09-22
+
+--- golang-openldap-0.2.orig/add-modify-delete.go
++++ golang-openldap-0.2/add-modify-delete.go
+@@ -29,6 +29,7 @@ package openldap
+ 
+ /* #include <stdlib.h>
+ #include <stdio.h>
++#define LDAP_DEPRECATED 1
+ #include <ldap.h>
+ 
+ // goc can not use union on structs ; so create a new type with same attributes and size
+--- golang-openldap-0.2.orig/openldap.go
++++ golang-openldap-0.2/openldap.go
+@@ -35,6 +35,7 @@ package openldap
+ 
+ /*
+ 
++#define LDAP_DEPRECATED 1
+ #include <stdlib.h>
+ #include <ldap.h>
+ 
