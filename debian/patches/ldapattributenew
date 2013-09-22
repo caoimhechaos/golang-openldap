@@ -1,0 +1,57 @@
+Description: Added Append(), GetValuesByName(), LdapAttributeNew().
+ This patch adds LdapAttributeNew() and fixes a few things, the
+ syntax being one of them.
+Author: Tonnerre Lombard <tonnerre@ancient-solutions.com>
+Origin: upstream, https://github.com/mqu/openldap/commit/0eba0d65cecdf0e6998a7e3bad2bd741426c96c0
+Forwarded: not-needed
+Last-Update: 2013-09-22
+
+--- golang-openldap-0.2.orig/openldap.go
++++ golang-openldap-0.2/openldap.go
+@@ -172,6 +172,14 @@ func (self *Ldap) Search(base string, sc
+ 
+ // ------------------------------------- Ldap* method (object oriented) -------------------------------------------------------------------
+ 
++// Create a new LdapAttribute entry with name and values.
++func LdapAttributeNew(name string, values []string)(*LdapAttribute){
++	a := new(LdapAttribute)
++	a.values = values
++	a.name = name
++	return a
++}
++
+ // Append() adds an LdapAttribute to self LdapEntry
+ func (self *LdapEntry) Append(a LdapAttribute){
+ 	self.values = append(self.values, a)
+@@ -197,7 +205,9 @@ func (self *LdapAttribute) ToText() stri
+ 			list = append(list, a)
+ 		}
+ 	}
+-	
++	if len(list) > 1 {
++		return fmt.Sprintf("%s: (%d)[%s]", self.name, len(list), strings.Join(list, ", "))
++	}
+ 	return fmt.Sprintf("%s: [%s]", self.name, strings.Join(list, ", "))
+ }
+ 
+@@ -263,7 +273,7 @@ func (self *LdapEntry) GetValuesByName(a
+ 	return []string{}
+ }
+ // GetOneValueByName() ; a quick way to get a single attribute value
+-func (self *LdapEntry) GetOneValueByName(attrib string) string, err{
++func (self *LdapEntry) GetOneValueByName(attrib string) (string, error){
+ 	
+ 	for _, a := range self.values{
+ 		if a.Name() == attrib {
+@@ -376,10 +386,7 @@ func (self *Ldap) SearchAll(base string,
+ 		attr, _ := e.FirstAttribute()
+ 		for attr != "" {
+ 
+-			_attr := new(LdapAttribute)
+-			_attr.values = e.GetValues(attr)
+-			_attr.name = attr
+-
++			_attr := LdapAttributeNew(attr, e.GetValues(attr))
+ 			_e.Append(*_attr)
+ 
+ 			attr, _ = e.NextAttribute()
