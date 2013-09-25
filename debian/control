@@ -3,7 +3,7 @@ Section: devel
 Priority: extra
 Maintainer: Tonnerre Lombard <tonnerre@ancient-solutions.com>
 Build-Depends: debhelper (>= 8.0.0), dh-golang (>= 1.3),
-	       golang-go (>= 1.0), libldap2-dev
+               golang-go (>= 1.0), libldap2-dev
 Standards-Version: 3.9.4
 Homepage: https://github.com/mqu/openldap/
 Vcs-Git: https://github.com/mqu/openldap.git
