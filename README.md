@@ -11,8 +11,8 @@ Installation is easy and very quick, as you can see :
 
  * Install the openldap library and devel packages. Use one of the following command.
  
-        sudo apt-get install libldap libldap2-dev  # For Debian / Ubuntu.
-        sudo urpmi openldap-devel                  # For Fedora, RH, ...
+        sudo apt-get install libldap libldap2-dev          # For Debian / Ubuntu.
+        sudo urpmi openldap-devel                          # For Fedora, RH, ...
 
  * Install golang-openldap binding go package.
 
